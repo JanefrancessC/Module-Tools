@@ -15,8 +15,6 @@ program.parse();
 const argv = program.args;
 const options = program.opts();
 
-let lineNumber = 1;
-
 for (const filePath of argv) {
   try {
     const content = await fs.readFile(filePath, "utf-8");
@@ -27,8 +25,9 @@ for (const filePath of argv) {
     lines.forEach((line, index) => {
       if (options.nonBlank) {
         if (line.trim() !== "") {
-          process.stdout.write(`${(index + 1).toString().padStart(6)} ${line}\n`);
-          lineNumber++;
+          process.stdout.write(
+            `${(index + 1).toString().padStart(6)} ${line}\n`,
+          );
         } else process.stdout.write(`${line}\n`);
       } else if (options.number) {
         process.stdout.write(`${(index + 1).toString().padStart(6)} ${line}\n`);
