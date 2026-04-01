@@ -5,7 +5,7 @@ import { program } from "commander";
 import { promises as fs } from "node:fs";
 
 program
-  .name("customLs")
+  .name("cls")
   .description("List contents of a directory")
   .option("-1", "Force output to be one entry per line")
   .option("-a", "Include hidden files")
@@ -38,7 +38,7 @@ async function listDir(dirPath, showHeader) {
       process.stdout.write(`${contents.join("   ")}\n`);
     }
   } catch (error) {
-    console.error(`customLs: ${dirPath}: ${error.message}`);
+    console.error(`cls: ${dirPath}: ${error.message}`);
     process.exit(1);
   }
 }

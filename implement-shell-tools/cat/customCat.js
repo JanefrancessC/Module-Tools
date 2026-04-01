@@ -4,7 +4,7 @@ import { promises as fs } from "node:fs";
 import process from "node:process";
 
 program
-  .name("customCat")
+  .name("ccat")
   .description("CLI command to concatenate and print files")
   .option("-n, --number", "Number all output lines starting, at 1")
   .option("-b, --nonBlank", "Number only non-blank lines, starting at 1")
@@ -36,6 +36,6 @@ for (const filePath of argv) {
       }
     });
   } catch (error) {
-    console.error(`customCat: ${filePath}: No such file or directory.`);
+    console.error(`ccat: ${filePath}: No such file or directory.`);
   }
 }
