@@ -31,4 +31,4 @@ try:
         print(f" ".join(entries))
 
 except FileNotFoundError:
-    print(f"ls: No such file or directory ")
+    print(f"ls: {args.path}: No such file or directory.", file=sys.stderr)
