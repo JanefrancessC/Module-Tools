@@ -21,7 +21,6 @@ try:
     if not args.all:
         entries = [entry for entry in entries if not entry.startswith('.')]
     entries.sort(key=str.lower)
-    # print(entries)
     
     if args.one:
         for entry in entries:
