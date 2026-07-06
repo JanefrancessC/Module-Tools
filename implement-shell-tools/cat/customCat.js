@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-
-
 import { program } from "commander";
 import { promises as fs } from "node:fs";
 import process from "node:process";
@@ -31,12 +29,12 @@ for (const filePath of argv) {
       if (options.nonBlank) {
         if (line !== "") {
           count++;
-          process.stdout.write(
-            `${count.toString().padStart(6)} ${line}\n`,
-          );
+          process.stdout.write(`${count.toString().padStart(6)} ${line}\n`);
         } else process.stdout.write(`${line}\n`);
       } else if (options.number) {
-        process.stdout.write(`${(count++ + 1).toString().padStart(6)} ${line}\t`);
+        process.stdout.write(
+          `${(count++ + 1).toString().padStart(6)} ${line}\t`,
+        );
       } else {
         process.stdout.write(`${line}\n`);
       }

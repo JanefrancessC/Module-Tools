@@ -16,6 +16,8 @@ program.parse();
 const options = program.opts();
 const targetPaths = program.args.length > 0 ? program.args : ["."];
 
+let hadError = false;
+
 async function listDir(dirPath, showHeader) {
   try {
     let contents = await fs.readdir(dirPath);
@@ -39,7 +41,7 @@ async function listDir(dirPath, showHeader) {
     }
   } catch (error) {
     console.error(`cls: ${dirPath}: ${error.message}`);
-    process.exit(1);
+    hadError = true;
   }
 }
 
@@ -51,3 +53,5 @@ for (let i = 0; i < targetPaths.length; i++) {
 
   if (isMultiplePath && i < targetPaths.length - 1) process.stdout.write(`\n`);
 }
+
+if (hadError) process.exit(1);
