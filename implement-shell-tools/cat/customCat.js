@@ -29,11 +29,11 @@ for (const filePath of argv) {
       if (options.nonBlank) {
         if (line !== "") {
           count++;
-          process.stdout.write(`${count.toString().padStart(6)} ${line}\n`);
+          process.stdout.write(`${count.toString().padStart(6)}\t${line}\n`);
         } else process.stdout.write(`${line}\n`);
       } else if (options.number) {
         process.stdout.write(
-          `${(count++ + 1).toString().padStart(6)} ${line}\t`,
+          `${(count++ + 1).toString().padStart(6)}\t${line}\n`,
         );
       } else {
         process.stdout.write(`${line}\n`);
