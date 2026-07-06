@@ -26,6 +26,8 @@ let totalLines = 0;
 let totalWords = 0;
 let totalBytes = 0;
 
+let hadError = false;
+
 async function countFiles(file) {
   try {
     const buffer = await fs.readFile(file);
@@ -48,7 +50,7 @@ async function countFiles(file) {
     process.stdout.write(`${result} ${file}\n`);
   } catch (error) {
     console.error(`cwc: ${file}: ${error.message}`);
-    process.exit(1);
+    hadError = true;
   }
 }
 
@@ -66,4 +68,6 @@ async function countFiles(file) {
 
     process.stdout.write(`${total} total\n`);
   }
+
+  if (hadError) process.exit(1);
 })();
