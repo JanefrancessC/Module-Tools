@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+
+
+
 import { program } from "commander";
 import { promises as fs } from "node:fs";
 import process from "node:process";
@@ -22,15 +25,18 @@ for (const filePath of argv) {
 
     if (lines[lines.length - 1] === "") lines.pop();
 
-    lines.forEach((line, index) => {
+    let count = 0;
+
+    lines.forEach((line) => {
       if (options.nonBlank) {
-        if (line.trim() !== "") {
+        if (line !== "") {
+          count++;
           process.stdout.write(
-            `${(index + 1).toString().padStart(6)} ${line}\n`,
+            `${count.toString().padStart(6)} ${line}\n`,
           );
         } else process.stdout.write(`${line}\n`);
       } else if (options.number) {
-        process.stdout.write(`${(index + 1).toString().padStart(6)} ${line}\n`);
+        process.stdout.write(`${(count++ + 1).toString().padStart(6)} ${line}\t`);
       } else {
         process.stdout.write(`${line}\n`);
       }
