@@ -13,9 +13,6 @@ parser.add_argument('-b', '--nonBlank', action='store_true', help='Number only n
 parser.add_argument('files', nargs='*', help='Files to read')
 
 args = parser.parse_args()
-# print(args.number, args.nonBlank, args.files)
-# print(sys.argv[0], sys.argv[1])
-
 
 for file in args.files:
     count = 1

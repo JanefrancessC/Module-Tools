@@ -17,7 +17,7 @@ args = parser.parse_args()
 
 try:
     entries = os.listdir(args.path)
-    # print(entries)
+    
     if not args.all:
         entries = [entry for entry in entries if not entry.startswith('.')]
     entries.sort(key=str.lower)
